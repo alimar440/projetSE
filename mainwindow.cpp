@@ -924,12 +924,19 @@ void MainWindow::tempsProcess( QTableWidget* tab , Processus **tabProcessus ,int
 void MainWindow::prepareFIFO(){
     viderTables(ui->tableWidget, ui->tableWidget_2, ui->tableWidget_3, ui->tableWidget_4 );
 
+
     p1.ajouterScenario(tab1 , 3) ;  p1.setTempsAttente(0) ; p1.setTempsReponse(0) ;
     p2.ajouterScenario(tab2 , 3) ;  p2.setTempsAttente(0) ; p2.setTempsReponse(0) ;
     p3.ajouterScenario(tab3 , 3) ;  p3.setTempsAttente(0) ; p3.setTempsReponse(0) ;
     p4.ajouterScenario(tab4 , 2) ;  p4.setTempsAttente(0) ; p4.setTempsReponse(0) ;
 
-    p2.setDateArrivee(2) ;  p3.setDateArrivee(1) ;
+    if(soumissionAjout){
+        p2.setDateArrivee(2) ;  p3.setDateArrivee(1) ;
+    }
+
+    if(soumissionRetrait){
+        p2.setDateArrivee(0) ;  p3.setDateArrivee(0) ;
+    }
 
     f.ajouterProcessus(&p1) ;
     f.ajouterProcessus(&p2) ;
@@ -939,12 +946,19 @@ void MainWindow::prepareFIFO(){
 void MainWindow::preparePCTE() {
     viderTables(ui->tableWidget_5 , ui->tableWidget_6, ui->tableWidget_7 , ui->tableWidget_8 ) ;
 
+
     p1.ajouterScenario(tab1 , 3) ;  p1.setTempsAttente(0) ; p1.setTempsReponse(0) ;
     p2.ajouterScenario(tab2 , 3) ;  p2.setTempsAttente(0) ; p2.setTempsReponse(0) ;
     p3.ajouterScenario(tab3 , 3) ;  p3.setTempsAttente(0) ; p3.setTempsReponse(0) ;
     p4.ajouterScenario(tab4 , 2) ;  p4.setTempsAttente(0) ; p4.setTempsReponse(0) ;
 
-    p2.setDateArrivee(2) ;  p3.setDateArrivee(1) ;
+    if(soumissionAjout){
+        p2.setDateArrivee(2) ;  p3.setDateArrivee(1) ;
+    }
+
+    if(soumissionRetrait){
+        p2.setDateArrivee(0) ;  p3.setDateArrivee(0) ;
+    }
 
     P.ajouterProcessus(&p1) ;
     P.ajouterProcessus(&p2) ;
@@ -959,7 +973,13 @@ void MainWindow::preparePRIOITE() {
     p3.ajouterScenario(tab3 , 3) ;  p3.setTempsAttente(0) ; p3.setTempsReponse(0) ;
     p4.ajouterScenario(tab4 , 2) ;  p4.setTempsAttente(0) ; p4.setTempsReponse(0) ;
 
-    p2.setDateArrivee(2) ;  p3.setDateArrivee(1) ;
+    if(soumissionAjout){
+        p2.setDateArrivee(2) ;  p3.setDateArrivee(1) ;
+    }
+
+    if(soumissionRetrait){
+        p2.setDateArrivee(0) ;  p3.setDateArrivee(0) ;
+    }
 
     p1.setPriorite(2);
     p2.setPriorite(8);
@@ -979,7 +999,13 @@ void MainWindow::prepareTOUNIQUET() {
     p3.ajouterScenario(tab3 , 3) ;  p3.setTempsAttente(0) ; p3.setTempsReponse(0) ;
     p4.ajouterScenario(tab4 , 2) ;  p4.setTempsAttente(0) ; p4.setTempsReponse(0) ;
 
-    p2.setDateArrivee(2) ;  p3.setDateArrivee(1) ;
+    if(soumissionAjout){
+        p2.setDateArrivee(2) ;  p3.setDateArrivee(1) ;
+    }
+
+    if(soumissionRetrait){
+        p2.setDateArrivee(0) ;  p3.setDateArrivee(0) ;
+    }
 
     T.ajouterProcessus(&p1) ;
     T.ajouterProcessus(&p2) ;
@@ -1000,8 +1026,13 @@ void MainWindow::preparePRIORITEPREAMPTIVE(){
     p3.ajouterScenario(tab3 , 3) ;  p3.setTempsAttente(0) ; p3.setTempsReponse(0) ;
     p4.ajouterScenario(tab4 , 2) ;  p4.setTempsAttente(0) ; p4.setTempsReponse(0) ;
 
-    p2.setDateArrivee(2) ;  p3.setDateArrivee(1) ;
+    if(soumissionAjout){
+        p2.setDateArrivee(2) ;  p3.setDateArrivee(1) ;
+    }
 
+    if(soumissionRetrait){
+        p2.setDateArrivee(0) ;  p3.setDateArrivee(0) ;
+    }
     PrR.ajouterProcessus(&p1) ;
     PrR.ajouterProcessus(&p2) ;
     PrR.ajouterProcessus(&p3) ;
@@ -1017,7 +1048,13 @@ void MainWindow::preparePCTEPREAMPTIVE(){
     p3.ajouterScenario(tab3 , 3) ;  p3.setTempsAttente(0) ; p3.setTempsReponse(0) ;
     p4.ajouterScenario(tab4 , 2) ;  p4.setTempsAttente(0) ; p4.setTempsReponse(0) ;
 
-    p2.setDateArrivee(2) ;  p3.setDateArrivee(1) ;
+    if(soumissionAjout){
+        p2.setDateArrivee(2) ;  p3.setDateArrivee(1) ;
+    }
+
+    if(soumissionRetrait){
+        p2.setDateArrivee(0) ;  p3.setDateArrivee(0) ;
+    }
 
     PR.ajouterProcessus(&p1) ;
     PR.ajouterProcessus(&p2) ;
@@ -1237,6 +1274,7 @@ void MainWindow::on_pushButton_44_clicked()
 
 void MainWindow::on_pushButton_45_clicked()
 {
+    calculTemps() ;
     ui->stackedWidget->setCurrentIndex(4);
 }
 
@@ -1248,5 +1286,43 @@ void MainWindow::on_pushButton_46_clicked()
     PrR.executionPrioriteAvecRequisition(ui->tableWidget_18 , ui->tableWidget_19, ui->tableWidget_20 , ui->tableWidget_21 ) ;
 
     ui->stackedWidget->setCurrentIndex(5);
+}
+
+
+void MainWindow::on_actionajout_triggered()
+{
+    soumissionAjout  = true ;
+    soumissionRetrait  = false ;
+    viderTables(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
+
+    viderTables(ui->tableWidget_18 , ui->tableWidget_19, ui->tableWidget_20 , ui->tableWidget_21 ) ;
+
+    viderTables(ui->tableWidget_22 , ui->tableWidget_23, ui->tableWidget_24 , ui->tableWidget_25) ;
+
+    viderTables(ui->tableWidget, ui->tableWidget_2, ui->tableWidget_3, ui->tableWidget_4 );
+
+    viderTables(ui->tableWidget_5 , ui->tableWidget_6, ui->tableWidget_7 , ui->tableWidget_8 ) ;
+
+    viderTables(ui->tableWidget_9 , ui->tableWidget_10, ui->tableWidget_11 , ui->tableWidget_12 ) ;
+
+}
+
+
+void MainWindow::on_actionretire_triggered()
+{
+    soumissionAjout  = false ;
+    soumissionRetrait  = true ;
+
+    viderTables(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
+
+    viderTables(ui->tableWidget_18 , ui->tableWidget_19, ui->tableWidget_20 , ui->tableWidget_21 ) ;
+
+    viderTables(ui->tableWidget_22 , ui->tableWidget_23, ui->tableWidget_24 , ui->tableWidget_25) ;
+
+    viderTables(ui->tableWidget, ui->tableWidget_2, ui->tableWidget_3, ui->tableWidget_4 );
+
+    viderTables(ui->tableWidget_5 , ui->tableWidget_6, ui->tableWidget_7 , ui->tableWidget_8 ) ;
+
+    viderTables(ui->tableWidget_9 , ui->tableWidget_10, ui->tableWidget_11 , ui->tableWidget_12 ) ;
 }
 

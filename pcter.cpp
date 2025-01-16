@@ -340,80 +340,60 @@ void Pcter::executionPCTER(QTableWidget* tab1, QTableWidget* tab2, QTableWidget*
     timer->start(100);  // Exécute toutes les 250 ms
 }
 
-void Pcter::remplirChronogramme( QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ,Liste listeP, File fileD, Processus *actifP, Processus *actifD , int col ){
-    if(actifP){
+void Pcter::remplirChronogramme(QTableWidget* tab1, QTableWidget* tab2, QTableWidget* tab3, QTableWidget* tab4, Liste listeP, File fileD, Processus* actifP, Processus* actifD, int col) {
 
-        switch(actifP->getPid()){
-        case 1 :
-            tab1->setItem(0, col, new QTableWidgetItem("X"));
-            break ;
-        case 2 :
-            tab2->setItem(0, col, new QTableWidgetItem("X"));
-            break ;
-        case 3 :
-            tab3->setItem(0, col, new QTableWidgetItem("X"));
-            break ;
-        case 4 :
-            tab4->setItem(0, col, new QTableWidgetItem("X"));
-            break ;
-        }
+    auto setItem = [](QTableWidget* tab, int row, int col, const QString& text, const QColor& color) {
+        QTableWidgetItem* item = new QTableWidgetItem(text);
+        item->setForeground(QBrush(color));         // Couleur du texte
+        item->setTextAlignment(Qt::AlignCenter);    // Centrage du texte
+        tab->setItem(row, col, item);
+    };
 
-    }
-    if(actifD){
-        switch(actifD->getPid()){
-        case 1 :
-            tab1->setItem(2, col, new QTableWidgetItem("X"));
-            break ;
-        case 2 :
-            tab2->setItem(2, col, new QTableWidgetItem("X"));
-            break ;
-        case 3 :
-            tab3->setItem(2, col, new QTableWidgetItem("X"));
-            break ;
-        case 4 :
-            tab4->setItem(2, col, new QTableWidgetItem("X"));
-            break ;
+    // 🔵 Processus actif en vert
+    if (actifP) {
+        QColor colorActifP("#2ECC71");  // Vert
+        switch (actifP->getPid()) {
+        case 1: setItem(tab1, 0, col, "X", colorActifP); break;
+        case 2: setItem(tab2, 0, col, "X", colorActifP); break;
+        case 3: setItem(tab3, 0, col, "X", colorActifP); break;
+        case 4: setItem(tab4, 0, col, "X", colorActifP); break;
         }
     }
-    while(!listeP.est_vide()){
-        Processus tete = listeP.prochain() ;
 
-        switch(tete.getPid()){
-        case 1 :
-            tab1->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
-        case 2 :
-            tab2->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
-        case 3 :
-            tab3->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
-        case 4 :
-            tab4->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
+    // 🔴 Processus débloqué en rouge
+    if (actifD) {
+        QColor colorActifD("#E74C3C");  // Rouge
+        switch (actifD->getPid()) {
+        case 1: setItem(tab1, 2, col, "X", colorActifD); break;
+        case 2: setItem(tab2, 2, col, "X", colorActifD); break;
+        case 3: setItem(tab3, 2, col, "X", colorActifD); break;
+        case 4: setItem(tab4, 2, col, "X", colorActifD); break;
         }
-
-
     }
-    while(!fileD.est_vide()){
-        Processus tete = fileD.tete() ;
 
-        switch(tete.getPid()){
-        case 1 :
-            tab1->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
-        case 2 :
-            tab2->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
-        case 3 :
-            tab3->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
-        case 4 :
-            tab4->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
+    // 🟡 Processus en attente en jaune
+    QColor colorListeP("#F1C40F");  // Jaune
+    while (!listeP.est_vide()) {
+        Processus tete = listeP.prochain();
+        switch (tete.getPid()) {
+        case 1: setItem(tab1, 1, col, "X", colorListeP); break;
+        case 2: setItem(tab2, 1, col, "X", colorListeP); break;
+        case 3: setItem(tab3, 1, col, "X", colorListeP); break;
+        case 4: setItem(tab4, 1, col, "X", colorListeP); break;
         }
+    }
 
-        fileD.defiler() ;
+    // 🔵 Processus dans la file d’attente en bleu
+    QColor colorFileD("#F1C40F");  // Bleu
+    while (!fileD.est_vide()) {
+        Processus tete = fileD.tete();
+        switch (tete.getPid()) {
+        case 1: setItem(tab1, 1, col, "X", colorFileD); break;
+        case 2: setItem(tab2, 1, col, "X", colorFileD); break;
+        case 3: setItem(tab3, 1, col, "X", colorFileD); break;
+        case 4: setItem(tab4, 1, col, "X", colorFileD); break;
+        }
+        fileD.defiler();
     }
 }
 

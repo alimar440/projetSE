@@ -43,6 +43,8 @@ class MainWindow : public QMainWindow
     Processus p3;
     Processus p4;
 
+    bool soumissionAjout = false ;
+    bool soumissionRetrait = true ;
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -152,6 +154,10 @@ private slots:
     void on_pushButton_45_clicked();
 
     void on_pushButton_46_clicked();
+
+    void on_actionajout_triggered();
+
+    void on_actionretire_triggered();
 
 private:
     Ui::MainWindow *ui;

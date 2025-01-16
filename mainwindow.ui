@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="page_6">
      <widget class="QListView" name="listView_5">
@@ -138,7 +138,7 @@ font-size: 16px</string>
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>570</y>
+         <y>550</y>
          <width>131</width>
          <height>51</height>
         </rect>
@@ -394,7 +394,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>210</y>
+        <y>190</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -592,7 +592,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>350</y>
+        <y>330</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -787,7 +787,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>490</y>
+        <y>470</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -1091,7 +1091,7 @@ font-size: 16px</string>
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>580</y>
+         <y>560</y>
          <width>131</width>
          <height>51</height>
         </rect>
@@ -1347,7 +1347,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>210</y>
+        <y>190</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -1542,7 +1542,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>350</y>
+        <y>330</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -1737,7 +1737,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>490</y>
+        <y>470</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -2041,7 +2041,7 @@ font-size: 16px</string>
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>580</y>
+         <y>560</y>
          <width>131</width>
          <height>51</height>
         </rect>
@@ -2297,7 +2297,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>210</y>
+        <y>190</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -2492,7 +2492,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>350</y>
+        <y>330</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -2687,7 +2687,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>490</y>
+        <y>470</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -2991,7 +2991,7 @@ font-size: 16px</string>
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>570</y>
+         <y>550</y>
          <width>131</width>
          <height>51</height>
         </rect>
@@ -3247,7 +3247,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>210</y>
+        <y>190</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -3442,7 +3442,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>350</y>
+        <y>330</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -3637,7 +3637,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>490</y>
+        <y>470</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -4183,7 +4183,7 @@ font-size: 16px</string>
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>560</y>
+         <y>540</y>
          <width>131</width>
          <height>51</height>
         </rect>
@@ -4439,7 +4439,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>210</y>
+        <y>190</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -4634,7 +4634,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>350</y>
+        <y>330</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -4829,7 +4829,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>490</y>
+        <y>470</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -5133,7 +5133,7 @@ font-size: 16px</string>
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>560</y>
+         <y>540</y>
          <width>131</width>
          <height>51</height>
         </rect>
@@ -5389,7 +5389,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>210</y>
+        <y>190</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -5584,7 +5584,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>490</y>
+        <y>470</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -5779,7 +5779,7 @@ font-size: 16px</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>350</y>
+        <y>330</y>
         <width>1001</width>
         <height>91</height>
        </rect>
@@ -5982,6 +5982,15 @@ font-size: 16px</string>
      <height>17</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menudate_soumission">
+    <property name="title">
+     <string>date soumission</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionajout"/>
+    <addaction name="actionretire"/>
+   </widget>
+   <addaction name="menudate_soumission"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -5995,6 +6004,16 @@ font-size: 16px</string>
     <bool>false</bool>
    </attribute>
   </widget>
+  <action name="actionajout">
+   <property name="text">
+    <string>ajout</string>
+   </property>
+  </action>
+  <action name="actionretire">
+   <property name="text">
+    <string>retire</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

@@ -278,74 +278,94 @@ void Fifo::executionFIFO(QTableWidget* tab1, QTableWidget* tab2, QTableWidget* t
 void Fifo::remplirChronogramme( QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ,File fileP, File fileD, Processus *actifP, Processus *actifD , int col ){
     if(actifP){
 
-        switch(actifP->getPid()){
-        case 1 :
-            tab1->setItem(0, col, new QTableWidgetItem("X"));
-            break ;
-        case 2 :
-            tab2->setItem(0, col, new QTableWidgetItem("X"));
-            break ;
-        case 3 :
-            tab3->setItem(0, col, new QTableWidgetItem("X"));
-            break ;
-        case 4 :
-            tab4->setItem(0, col, new QTableWidgetItem("X"));
-            break ;
+        QTableWidgetItem *item = new QTableWidgetItem("X");
+        item->setForeground(QBrush(QColor("#50C878")));
+        item->setTextAlignment(Qt::AlignCenter);
+
+
+        switch(actifP->getPid()) {
+        case 1:
+            tab1->setItem(0, col, item);
+            break;
+        case 2:
+            tab2->setItem(0, col, item);
+            break;
+        case 3:
+            tab3->setItem(0, col, item);
+            break;
+        case 4:
+            tab4->setItem(0, col, item);
+            break;
         }
+
 
     }
     if(actifD){
-        switch(actifD->getPid()){
-        case 1 :
-            tab1->setItem(2, col, new QTableWidgetItem("X"));
-            break ;
-        case 2 :
-            tab2->setItem(2, col, new QTableWidgetItem("X"));
-            break ;
-        case 3 :
-            tab3->setItem(2, col, new QTableWidgetItem("X"));
-            break ;
-        case 4 :
-            tab4->setItem(2, col, new QTableWidgetItem("X"));
-            break ;
+        QTableWidgetItem *item = new QTableWidgetItem("X");
+        item->setForeground(QBrush(QColor("#E74C3C")));
+        item->setTextAlignment(Qt::AlignCenter);
+
+        switch(actifD->getPid()) {
+        case 1:
+            tab1->setItem(2, col, item);
+            break;
+        case 2:
+            tab2->setItem(2, col, item);
+            break;
+        case 3:
+            tab3->setItem(2, col, item);
+            break;
+        case 4:
+            tab4->setItem(2, col, item);
+            break;
         }
+
     }
     while(!fileP.est_vide()){
         Processus tete = fileP.tete() ;
 
-        switch(tete.getPid()){
-        case 1 :
-            tab1->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
-        case 2 :
-            tab2->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
-        case 3 :
-            tab3->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
-        case 4 :
-            tab4->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
+        QTableWidgetItem *item = new QTableWidgetItem("X");
+        item->setForeground(QBrush(QColor("#F1C40F")));
+        item->setTextAlignment(Qt::AlignCenter);
+
+        switch(tete.getPid()) {
+        case 1:
+            tab1->setItem(1, col, item);
+            break;
+        case 2:
+            tab2->setItem(1, col, item);
+            break;
+        case 3:
+            tab3->setItem(1, col, item);
+            break;
+        case 4:
+            tab4->setItem(1, col, item);
+            break;
         }
+
 
         fileP.defiler() ;
     }
     while(!fileD.est_vide()){
         Processus tete = fileD.tete() ;
 
-        switch(tete.getPid()){
-        case 1 :
-            tab1->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
-        case 2 :
-            tab2->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
-        case 3 :
-            tab3->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
-        case 4 :
-            tab4->setItem(1, col, new QTableWidgetItem("X"));
-            break ;
+        QTableWidgetItem *item = new QTableWidgetItem("X");
+        item->setForeground(QBrush(QColor("#F1C40F")));
+        item->setTextAlignment(Qt::AlignCenter);
+
+        switch(tete.getPid()) {
+        case 1:
+            tab1->setItem(1, col, item);
+            break;
+        case 2:
+            tab2->setItem(1, col, item);
+            break;
+        case 3:
+            tab3->setItem(1, col, item);
+            break;
+        case 4:
+            tab4->setItem(1, col, item);
+            break;
         }
 
         fileD.defiler() ;
