@@ -46,6 +46,8 @@ public:
 
     void executionPCTE(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ) ;
 
+    void executionPCTE1(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ) ;
+
     Processus ** getTabProcess() { return tabProcessus ; } ;
 
 };

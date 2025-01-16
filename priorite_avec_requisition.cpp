@@ -347,7 +347,7 @@ PrioriteAvecRequisition::~PrioriteAvecRequisition(){
 
 }
 
-void PrioriteAvecRequisition::executionPrioriteAvecRequisition(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 )
+void PrioriteAvecRequisition::executionPrioriteAvecRequisition1(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 )
 {
 
     int i = 0, j = 0;
@@ -382,6 +382,49 @@ void PrioriteAvecRequisition::executionPrioriteAvecRequisition(QTableWidget* tab
 
     }
 
+}
+#include <QTimer>
+void PrioriteAvecRequisition::executionPrioriteAvecRequisition(QTableWidget* tab1, QTableWidget* tab2, QTableWidget* tab3, QTableWidget* tab4) {
+    int* i = new int(0);  // Pointer to track time
+    int* j = new int(0);  // Pointer to track process count
+
+    QTimer* timer = new QTimer();
+
+    QObject::connect(timer, &QTimer::timeout, [=]() mutable {
+        if (*i >= MAX) {
+            timer->stop();
+            delete i;
+            delete j;
+            timer->deleteLater();
+            return;
+        }
+
+        // Ajouter les processus arrivés
+        if (*j < NB_PROCESSUS) {
+            for (int k = 0; k < NB_PROCESSUS; k++) {
+                if (tabProcessus[k]->getDateArrivee() == *i) {
+                    (tabProcessus[k]->getScenario()->type_operation == 0)
+                    ? listeProcessusPret.ajouter(tabProcessus[k])
+                    : fileProcessusDisque.enfiler(*tabProcessus[k]);
+                    (*j)++;
+                }
+            }
+        }
+
+        // Mise à jour des processus actifs
+        misAJourCoteDisque(&fileProcessusDisque, &listeProcessusPret, actifDisque, actifProcesseur);
+        misAJourElu(&listeProcessusPret, &fileProcessusDisque, actifProcesseur, actifDisque);
+
+        // Mettre à jour le chronogramme
+        remplirChronogramme(tab1, tab2, tab3, tab4, listeProcessusPret, fileProcessusDisque, actifProcesseur, actifDisque, *i);
+
+        // Print current time (for debugging or logging purposes)
+        std::cout << "-------------------------------------------------------------------------------------" << *i << "\n";
+
+        (*i)++;  // Increment time
+    });
+
+    timer->start(100);  // Exécute toutes les 250 ms
 }
 
 

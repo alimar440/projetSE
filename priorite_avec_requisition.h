@@ -43,8 +43,9 @@ public:
     void remplirChronogramme(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ,
                              Liste listeP, File file2, Processus *process1, Processus *process2, int time);
 
-    void executionPrioriteAvecRequisition(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ) ;
+    void executionPrioriteAvecRequisition1(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ) ;
 
+    void executionPrioriteAvecRequisition(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ) ;
     Processus ** getTabProcess() { return tabProcessus ; } ;
 
 };

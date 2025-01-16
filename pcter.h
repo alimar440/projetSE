@@ -47,6 +47,8 @@ public:
 
     void executionPCTER(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ) ;
 
+    void executionPCTER1(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ) ;
+
 
 };
 

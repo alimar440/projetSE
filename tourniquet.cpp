@@ -192,8 +192,58 @@ void Tourniquet::misAJourElu(File *F1, File *F2, Processus* actif1, Processus* a
     }
 }
 
+#include <QTimer>
+void Tourniquet::executionTourniquet(QTableWidget* tab1, QTableWidget* tab2, QTableWidget* tab3, QTableWidget* tab4) {
+    int* i = new int(0);  // Pointer to track time
+    int* j = new int(0);  // Pointer to track process count
 
-void Tourniquet::executionTourniquet(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ){
+    QTimer* timer = new QTimer();
+
+    QObject::connect(timer, &QTimer::timeout, [=]() mutable {
+        if (*i >= MAX) {
+            timer->stop();
+            delete i;
+            delete j;
+            timer->deleteLater();
+            return;
+        }
+
+        // Ajouter les processus arrivés
+        if (*j < NB_PROCESSUS) {
+            for (int k = 0; k < NB_PROCESSUS; k++) {
+                if (tabProcessus[k]->getDateArrivee() == *i) {
+                    tabProcessus[k]->setPret(true);
+                    (tabProcessus[k]->getScenario()->type_operation == 0)
+                        ? fileProcessusPret.enfiler(*tabProcessus[k])
+                        : fileProcessusDisque.enfiler(*tabProcessus[k]);
+                    (*j)++;
+                }
+            }
+        }
+
+        // Mise à jour des processus actifs
+        misAJourElu(&fileProcessusPret, &fileProcessusDisque, actifProcesseur, actifDisque, 1);
+        misAJourElu(&fileProcessusDisque, &fileProcessusPret, actifDisque, actifProcesseur, 2);
+
+        // Mettre à jour le chronogramme
+        remplirChronogramme(tab1, tab2, tab3, tab4, fileProcessusPret, fileProcessusDisque, actifProcesseur, actifDisque, *i);
+
+        // Vérifier si tout est terminé
+        if (fileProcessusPret.est_vide() && fileProcessusDisque.est_vide() && !actifProcesseur && !actifDisque) {
+            timer->stop();
+            delete i;
+            delete j;
+            timer->deleteLater();
+            return;
+        }
+
+        (*i)++;  // Increment time
+    });
+
+    timer->start(100);  // Exécute toutes les 250 ms
+}
+
+void Tourniquet::executionTourniquet1(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ){
 
     int i = 0, j = 0;
 

@@ -20,10 +20,10 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
     Fifo f ;
+    Pcte P ;
     Tourniquet T ;
     PrioriteSansRequisition Pr ;
     PrioriteAvecRequisition PrR ;
-    Pcte P ;
     Pcter PR ;
 
 

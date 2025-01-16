@@ -402,7 +402,7 @@ void MainWindow::calculTemps(){
     QString X = "X" ;
     prepareFIFO() ;
 
-    f.executionFIFO(ui->tableWidget , ui->tableWidget_2, ui->tableWidget_3 , ui->tableWidget_4, 1 ) ;
+    f.executionFIFO1(ui->tableWidget , ui->tableWidget_2, ui->tableWidget_3 , ui->tableWidget_4, 1 ) ;
 
 
     Processus** tabFifo = f.getTabProcess() ;
@@ -479,7 +479,7 @@ void MainWindow::calculTemps(){
 
     preparePCTE() ;
 
-    P.executionPCTE(ui->tableWidget_5 , ui->tableWidget_6, ui->tableWidget_7 , ui->tableWidget_8 ) ;
+    P.executionPCTE1(ui->tableWidget_5 , ui->tableWidget_6, ui->tableWidget_7 , ui->tableWidget_8 ) ;
 
     Processus** tabPCTE = P.getTabProcess() ;
 
@@ -558,7 +558,7 @@ void MainWindow::calculTemps(){
 
     preparePRIOITE() ;
 
-    Pr.executionPrioriteSansRequisition(ui->tableWidget_9 , ui->tableWidget_10, ui->tableWidget_11 , ui->tableWidget_12 ) ;
+    Pr.executionPrioriteSansRequisition1(ui->tableWidget_9 , ui->tableWidget_10, ui->tableWidget_11 , ui->tableWidget_12 ) ;
 
     Processus** tabPRIORITE= Pr.getTabProcess() ;
 
@@ -633,7 +633,7 @@ void MainWindow::calculTemps(){
 
     prepareTOUNIQUET() ;
 
-    T.executionTourniquet(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
+    T.executionTourniquet1(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
 
     Processus** tabTOURNIQUET= T.getTabProcess() ;
 
@@ -714,7 +714,7 @@ void MainWindow::calculTemps(){
 
     preparePRIORITEPREAMPTIVE() ;
 
-    PrR.executionPrioriteAvecRequisition(ui->tableWidget_18 , ui->tableWidget_19, ui->tableWidget_20 , ui->tableWidget_21 ) ;
+    PrR.executionPrioriteAvecRequisition1(ui->tableWidget_18 , ui->tableWidget_19, ui->tableWidget_20 , ui->tableWidget_21 ) ;
 
     Processus** tabPRIORITEPREAMTIVE= Pr.getTabProcess() ;
 
@@ -806,7 +806,7 @@ void MainWindow::calculTemps(){
     preparePCTEPREAMPTIVE() ;
 
 
-    PR.executionPCTER(ui->tableWidget_22 , ui->tableWidget_23, ui->tableWidget_24 , ui->tableWidget_25 ) ;
+    PR.executionPCTER1(ui->tableWidget_22 , ui->tableWidget_23, ui->tableWidget_24 , ui->tableWidget_25 ) ;
 
     Processus** tabPREAMPTIVE = P.getTabProcess() ;
 

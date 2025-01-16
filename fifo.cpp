@@ -176,7 +176,7 @@ void Fifo::misAJourElu(File *F1, File *F2, Processus* actif1, Processus* actif2,
 }
 
 
-void Fifo::executionFIFO(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4,int lieu ){
+void Fifo::executionFIFO1(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4,int lieu ){
 
    int j = 0;
    int i = 0 ;
@@ -225,6 +225,55 @@ void Fifo::executionFIFO(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget*
 
 }
 
+#include <QTimer>
+void Fifo::executionFIFO(QTableWidget* tab1, QTableWidget* tab2, QTableWidget* tab3, QTableWidget* tab4, int lieu) {
+    int* j = new int(0);
+    int* i = new int(0);
+
+    QTimer* timer = new QTimer();
+
+    QObject::connect(timer, &QTimer::timeout, [=]() mutable {
+        if (*i >= MAX) {
+            timer->stop();
+            delete i;
+            delete j;
+            timer->deleteLater();
+            return;
+        }
+
+        // Ajouter les processus arrivés
+        if (*j < NB_PROCESSUS) {
+            for (int k = 0; k < NB_PROCESSUS; k++) {
+                if (tabProcessus[k]->getDateArrivee() == *i) {
+                    (tabProcessus[k]->getScenario()->type_operation == 0)
+                    ? fileProcessusPret.enfiler(*tabProcessus[k])
+                    : fileProcessusDisque.enfiler(*tabProcessus[k]);
+                    (*j)++;
+                }
+            }
+        }
+
+        // Mise à jour des processus actifs
+        misAJourElu(&fileProcessusPret, &fileProcessusDisque, actifProcesseur, actifDisque, 1);
+        misAJourElu(&fileProcessusDisque, &fileProcessusPret, actifDisque, actifProcesseur, 2);
+
+        // Vérifier si tout est terminé
+        if (fileProcessusPret.est_vide() && fileProcessusDisque.est_vide() && !actifProcesseur && !actifDisque) {
+            timer->stop();
+            delete i;
+            delete j;
+            timer->deleteLater();
+            return;
+        }
+
+        // Mettre à jour le chronogramme
+        remplirChronogramme(tab1, tab2, tab3, tab4, fileProcessusPret, fileProcessusDisque, actifProcesseur, actifDisque, *i);
+
+        (*i)++;
+    });
+
+    timer->start(100);
+}
 
 void Fifo::remplirChronogramme( QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ,File fileP, File fileD, Processus *actifP, Processus *actifD , int col ){
     if(actifP){

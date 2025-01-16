@@ -47,6 +47,8 @@ public:
 
     void executionFIFO(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ,int lieu);
 
+    void executionFIFO1(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ,int lieu);
+
     void remplirChronogramme(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ,
                              File file1, File file2, Processus *process1, Processus *process2, int time);
 
