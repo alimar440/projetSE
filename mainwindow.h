@@ -45,6 +45,7 @@ class MainWindow : public QMainWindow
 
     bool soumissionAjout = false ;
     bool soumissionRetrait = true ;
+    int quant ;
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -158,6 +159,14 @@ private slots:
     void on_actionajout_triggered();
 
     void on_actionretire_triggered();
+
+    void on_action1_triggered();
+
+    void on_action2_triggered();
+
+    void on_action3_triggered();
+
+    void on_action4_triggered();
 
 private:
     Ui::MainWindow *ui;

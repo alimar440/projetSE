@@ -15,6 +15,7 @@ Tourniquet::Tourniquet(){
     actifDisque = nullptr;
 
     compteur = 0;
+
 }
 Tourniquet::~Tourniquet(){
 
@@ -35,7 +36,7 @@ void Tourniquet::ajouterProcessus(Processus* p)
 
 
 
-void Tourniquet::misAJourElu(File *F1, File *F2, Processus* actif1, Processus* actif2, int sens){
+void Tourniquet::misAJourElu(File *F1, File *F2, Processus* actif1, Processus* actif2, int sens , int QUANTUM  ){
 
     if(actif1 == nullptr)
     {
@@ -79,6 +80,7 @@ void Tourniquet::misAJourElu(File *F1, File *F2, Processus* actif1, Processus* a
 
                 }
                 actif1 = nullptr;
+
             }
             else
             {
@@ -193,7 +195,7 @@ void Tourniquet::misAJourElu(File *F1, File *F2, Processus* actif1, Processus* a
 }
 
 #include <QTimer>
-void Tourniquet::executionTourniquet(QTableWidget* tab1, QTableWidget* tab2, QTableWidget* tab3, QTableWidget* tab4) {
+void Tourniquet::executionTourniquet(QTableWidget* tab1, QTableWidget* tab2, QTableWidget* tab3, QTableWidget* tab4 , int qt) {
     int* i = new int(0);  // Pointer to track time
     int* j = new int(0);  // Pointer to track process count
 
@@ -222,8 +224,8 @@ void Tourniquet::executionTourniquet(QTableWidget* tab1, QTableWidget* tab2, QTa
         }
 
         // Mise à jour des processus actifs
-        misAJourElu(&fileProcessusPret, &fileProcessusDisque, actifProcesseur, actifDisque, 1);
-        misAJourElu(&fileProcessusDisque, &fileProcessusPret, actifDisque, actifProcesseur, 2);
+        misAJourElu(&fileProcessusPret, &fileProcessusDisque, actifProcesseur, actifDisque, 1 , qt );
+        misAJourElu(&fileProcessusDisque, &fileProcessusPret, actifDisque, actifProcesseur, 2 , qt );
 
         // Mettre à jour le chronogramme
         remplirChronogramme(tab1, tab2, tab3, tab4, fileProcessusPret, fileProcessusDisque, actifProcesseur, actifDisque, *i);
@@ -243,7 +245,7 @@ void Tourniquet::executionTourniquet(QTableWidget* tab1, QTableWidget* tab2, QTa
     timer->start(100);  // Exécute toutes les 250 ms
 }
 
-void Tourniquet::executionTourniquet1(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ){
+void Tourniquet::executionTourniquet1(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 , int QUANTUM){
 
     int i = 0, j = 0;
 
@@ -267,9 +269,9 @@ void Tourniquet::executionTourniquet1(QTableWidget* tab1 , QTableWidget* tab2 , 
         //QCoreApplication::processEvents() ;
 
 
-        misAJourElu(&fileProcessusPret, &fileProcessusDisque, actifProcesseur, actifDisque, 1);
+        misAJourElu(&fileProcessusPret, &fileProcessusDisque, actifProcesseur, actifDisque, 1 , QUANTUM);
 
-        misAJourElu(&fileProcessusDisque, &fileProcessusPret, actifDisque, actifProcesseur, 2);
+        misAJourElu(&fileProcessusDisque, &fileProcessusPret, actifDisque, actifProcesseur, 2 , QUANTUM);
 
         remplirChronogramme( tab1 , tab2 ,  tab3 ,  tab4  ,fileProcessusPret,fileProcessusDisque, actifProcesseur,actifDisque , i ) ;
 
@@ -281,7 +283,7 @@ void Tourniquet::executionTourniquet1(QTableWidget* tab1 , QTableWidget* tab2 , 
 
         i++;
 
-        }
+    }
 
 }
 
@@ -366,16 +368,16 @@ void Tourniquet::remplirChronogramme( QTableWidget* tab1 , QTableWidget* tab2 , 
 
         switch(tete.getPid()) {
         case 1:
-            tab1->setItem(1, col, item);
+            tab1->setItem(2, col, item);
             break;
         case 2:
-            tab2->setItem(1, col, item);
+            tab2->setItem(2, col, item);
             break;
         case 3:
-            tab3->setItem(1, col, item);
+            tab3->setItem(2, col, item);
             break;
         case 4:
-            tab4->setItem(1, col, item);
+            tab4->setItem(2, col, item);
             break;
         }
 

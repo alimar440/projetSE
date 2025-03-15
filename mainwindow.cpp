@@ -100,7 +100,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     }
 
-
+    quant = 3 ;
 
     ui->tableWidget->setFixedHeight(125);
     ui->tableWidget_2->setFixedHeight(125);
@@ -118,7 +118,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tableWidget_14->setFixedHeight(125);
     ui->tableWidget_15->setFixedHeight(125);
     ui->tableWidget_16->setFixedHeight(125);
-    ui->tableWidget_18->setFixedHeight(125);
+    ui->tableWidget_18->setFixedHeight(150);
     ui->tableWidget_19->setFixedHeight(125);
     ui->tableWidget_20->setFixedHeight(125);
     ui->tableWidget_21->setFixedHeight(125);
@@ -189,7 +189,7 @@ void MainWindow::on_pushButton_8_clicked()
 {
     prepareTOUNIQUET()  ;
 
-    T.executionTourniquet(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
+    T.executionTourniquet(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 , quant) ;
 
 
     ui->stackedWidget->setCurrentIndex(3);
@@ -237,7 +237,7 @@ void MainWindow::on_pushButton_11_clicked()
     prepareTOUNIQUET()  ;
 
 
-    T.executionTourniquet(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
+    T.executionTourniquet(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 , quant ) ;
 
     ui->stackedWidget->setCurrentIndex(3);
 }
@@ -320,7 +320,7 @@ void MainWindow::on_pushButton_clicked()
 {
     prepareTOUNIQUET() ;
 
-    T.executionTourniquet(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
+    T.executionTourniquet(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 , quant ) ;
 
 
     ui->stackedWidget->setCurrentIndex(3);
@@ -331,7 +331,7 @@ void MainWindow::on_pushButton_16_clicked()
 {
     prepareTOUNIQUET() ;
 
-    T.executionTourniquet(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
+    T.executionTourniquet(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 , quant) ;
 
 
     ui->stackedWidget->setCurrentIndex(3);
@@ -633,7 +633,7 @@ void MainWindow::calculTemps(){
 
     prepareTOUNIQUET() ;
 
-    T.executionTourniquet1(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
+    T.executionTourniquet1(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 , quant ) ;
 
     Processus** tabTOURNIQUET= T.getTabProcess() ;
 
@@ -894,7 +894,7 @@ void MainWindow::calculTemps(){
         double moyenne =  sum / 4;
 
         ui->tableWidget_17->setItem(6, col , new QTableWidgetItem("        " + QString::number(moyenne)));
-          }
+    }
 
 
 }
@@ -1130,7 +1130,7 @@ void MainWindow::on_pushButton_28_clicked()
 {
     prepareTOUNIQUET()  ;
 
-    T.executionTourniquet(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
+    T.executionTourniquet(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 , quant) ;
 
     ui->stackedWidget->setCurrentIndex(3);
 }
@@ -1256,7 +1256,7 @@ void MainWindow::on_pushButton_43_clicked()
 {
     prepareTOUNIQUET()  ;
 
-    T.executionTourniquet(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
+    T.executionTourniquet(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 , quant) ;
 
     ui->stackedWidget->setCurrentIndex(3);
 }
@@ -1313,6 +1313,74 @@ void MainWindow::on_actionretire_triggered()
     soumissionAjout  = false ;
     soumissionRetrait  = true ;
 
+    viderTables(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
+
+    viderTables(ui->tableWidget_18 , ui->tableWidget_19, ui->tableWidget_20 , ui->tableWidget_21 ) ;
+
+    viderTables(ui->tableWidget_22 , ui->tableWidget_23, ui->tableWidget_24 , ui->tableWidget_25) ;
+
+    viderTables(ui->tableWidget, ui->tableWidget_2, ui->tableWidget_3, ui->tableWidget_4 );
+
+    viderTables(ui->tableWidget_5 , ui->tableWidget_6, ui->tableWidget_7 , ui->tableWidget_8 ) ;
+
+    viderTables(ui->tableWidget_9 , ui->tableWidget_10, ui->tableWidget_11 , ui->tableWidget_12 ) ;
+}
+
+
+void MainWindow::on_action1_triggered()
+{
+    quant = 1 ;
+    viderTables(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
+
+    viderTables(ui->tableWidget_18 , ui->tableWidget_19, ui->tableWidget_20 , ui->tableWidget_21 ) ;
+
+    viderTables(ui->tableWidget_22 , ui->tableWidget_23, ui->tableWidget_24 , ui->tableWidget_25) ;
+
+    viderTables(ui->tableWidget, ui->tableWidget_2, ui->tableWidget_3, ui->tableWidget_4 );
+
+    viderTables(ui->tableWidget_5 , ui->tableWidget_6, ui->tableWidget_7 , ui->tableWidget_8 ) ;
+
+    viderTables(ui->tableWidget_9 , ui->tableWidget_10, ui->tableWidget_11 , ui->tableWidget_12 ) ;
+}
+
+
+void MainWindow::on_action2_triggered()
+{
+    quant = 2 ;
+    viderTables(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
+
+    viderTables(ui->tableWidget_18 , ui->tableWidget_19, ui->tableWidget_20 , ui->tableWidget_21 ) ;
+
+    viderTables(ui->tableWidget_22 , ui->tableWidget_23, ui->tableWidget_24 , ui->tableWidget_25) ;
+
+    viderTables(ui->tableWidget, ui->tableWidget_2, ui->tableWidget_3, ui->tableWidget_4 );
+
+    viderTables(ui->tableWidget_5 , ui->tableWidget_6, ui->tableWidget_7 , ui->tableWidget_8 ) ;
+
+    viderTables(ui->tableWidget_9 , ui->tableWidget_10, ui->tableWidget_11 , ui->tableWidget_12 ) ;
+}
+
+
+void MainWindow::on_action3_triggered()
+{
+    quant = 3 ;
+    viderTables(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
+
+    viderTables(ui->tableWidget_18 , ui->tableWidget_19, ui->tableWidget_20 , ui->tableWidget_21 ) ;
+
+    viderTables(ui->tableWidget_22 , ui->tableWidget_23, ui->tableWidget_24 , ui->tableWidget_25) ;
+
+    viderTables(ui->tableWidget, ui->tableWidget_2, ui->tableWidget_3, ui->tableWidget_4 );
+
+    viderTables(ui->tableWidget_5 , ui->tableWidget_6, ui->tableWidget_7 , ui->tableWidget_8 ) ;
+
+    viderTables(ui->tableWidget_9 , ui->tableWidget_10, ui->tableWidget_11 , ui->tableWidget_12 ) ;
+}
+
+
+void MainWindow::on_action4_triggered()
+{
+    quant = 4 ;
     viderTables(ui->tableWidget_13 , ui->tableWidget_14, ui->tableWidget_15 , ui->tableWidget_16 ) ;
 
     viderTables(ui->tableWidget_18 , ui->tableWidget_19, ui->tableWidget_20 , ui->tableWidget_21 ) ;

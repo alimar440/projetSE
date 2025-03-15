@@ -3,7 +3,7 @@
 
 
 
-#define QUANTUM 2
+//#define QUANTUM 2
 #define MAX 35
 #define NB_PROCESSUS 4
 
@@ -14,6 +14,7 @@
 
 class Tourniquet{
 private:
+
     Processus **tabProcessus;
 
     File fileProcessusPret;
@@ -42,16 +43,18 @@ public:
 
     Processus defilerFromDisque();
 
-    void misAJourElu(File *F, File *F2, Processus* actif1, Processus* actif2, int sens);
+    void misAJourElu(File *F, File *F2, Processus* actif1, Processus* actif2, int sens , int QUANTUM );
+
+
 
     void executionTourniquet();
 
     void remplirChronogramme(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ,
                              File file1, File file2, Processus *process1, Processus *process2, int time);
 
-    void executionTourniquet(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ) ;
+    void executionTourniquet(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 , int qt ) ;
 
-    void executionTourniquet1(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 ) ;
+    void executionTourniquet1(QTableWidget* tab1 , QTableWidget* tab2 , QTableWidget* tab3 , QTableWidget* tab4 , int qt) ;
 
     Processus ** getTabProcess() { return tabProcessus ; } ;
 

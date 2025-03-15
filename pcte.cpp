@@ -314,10 +314,10 @@ void Pcte::remplirChronogramme(QTableWidget* tab1, QTableWidget* tab2, QTableWid
     while (!fileD.est_vide()) {
         Processus tete = fileD.tete();
         switch (tete.getPid()) {
-        case 1: setItem(tab1, 1, col, "X", colorFileD); break;
-        case 2: setItem(tab2, 1, col, "X", colorFileD); break;
-        case 3: setItem(tab3, 1, col, "X", colorFileD); break;
-        case 4: setItem(tab4, 1, col, "X", colorFileD); break;
+        case 1: setItem(tab1, 2, col, "X", colorFileD); break;
+        case 2: setItem(tab2, 2, col, "X", colorFileD); break;
+        case 3: setItem(tab3, 2, col, "X", colorFileD); break;
+        case 4: setItem(tab4, 2, col, "X", colorFileD); break;
         }
         fileD.defiler();
     }

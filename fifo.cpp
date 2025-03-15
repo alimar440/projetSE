@@ -355,16 +355,16 @@ void Fifo::remplirChronogramme( QTableWidget* tab1 , QTableWidget* tab2 , QTable
 
         switch(tete.getPid()) {
         case 1:
-            tab1->setItem(1, col, item);
+            tab1->setItem(2, col, item);
             break;
         case 2:
-            tab2->setItem(1, col, item);
+            tab2->setItem(2, col, item);
             break;
         case 3:
-            tab3->setItem(1, col, item);
+            tab3->setItem(2, col, item);
             break;
         case 4:
-            tab4->setItem(1, col, item);
+            tab4->setItem(2, col, item);
             break;
         }
 
