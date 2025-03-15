@@ -31,4 +31,5 @@ Les algorithmes d'ordonnancement simulés sont :
 ### 1. Clonez ce repository :
 
 ```bash
-https://github.com/alimar440/projetSE/tree/main
+git clone https://github.com/alimar440/projetSE.git
+
