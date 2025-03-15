@@ -31,4 +31,4 @@ Les algorithmes d'ordonnancement simulés sont :
 ### 1. Clonez ce repository :
 
 ```bash
-git clone https://github.com/your-username/algorithmes-ordonnancement-qt.git
+https://github.com/alimar440/projetSE/tree/main
